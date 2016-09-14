@@ -3,8 +3,11 @@ from os import walk
 import sys
 from PIL import Image
 
+# This script will create a thumbnail for one zip archive.  Will do the alphabetical first image in the archive.
+# File created will be the script target.thumbnail.
+
 print "Usage: Run with target as zip file of images."
-print "Script will truncate filename; pull out and resize thumbnail."
+print "Script will pull out and resize thumbnail."
 
 if(len(sys.argv) < 1):
   print "Must provide target file in current directory."
@@ -29,13 +32,13 @@ for name in nameList:
 #print nameListPruned
 nameListPruned.sort()
 firstItemName = nameListPruned[0]
-print firstItemName
+#print firstItemName
 currentZip.extract(firstItemName)  #Extraction directory can be changed.  Can the extraction name?
 
 size = 128, 128
 
 thumbName = zipName+".thumbnail"
-print thumbName
+#print thumbName
 try:
     img = Image.open(firstItemName)
     img.thumbnail(size)
