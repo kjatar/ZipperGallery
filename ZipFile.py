@@ -15,6 +15,10 @@ if(len(sys.argv) < 1):
 
 zipName = sys.argv[1]
 
+if not zipfile.is_zipfile(zipName):
+  print "Invalid zip file designated: ", zipName
+  sus.exit(1)
+
 #Filename processing should be done at display instead of backend.
 #Will make it easier to pull tags off of ex.
 
