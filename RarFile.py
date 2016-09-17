@@ -9,6 +9,9 @@ from PIL import Image
 print "Usage: Run with target as rar file of images."
 print "Script will pull out and resize thumbnail."
 
+rarfile.UNRAR_TOOL = '/usr/local/bin/unrar'
+rarfile.PATH_SEP = '/'
+
 if(len(sys.argv) < 1):
   print "Must provide target file in current directory."
   sys.exit(1)
@@ -36,13 +39,13 @@ for name in nameList:
 #print nameListPruned
 nameListPruned.sort()
 firstItemName = nameListPruned[0]
-#print firstItemName
+print firstItemName
 currentRar.extract(firstItemName)  #Extraction directory can be changed.  Can the extraction name?
 
 size = 128, 128
 
 thumbName = rarName+".thumbnail"
-#print thumbName
+print thumbName
 try:
     img = Image.open(firstItemName)
     img.thumbnail(size)
